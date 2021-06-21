@@ -1,11 +1,10 @@
-# Condition based Pull Request Labeler
+# Enhanced Condition based Pull Request Labeler
 
 Implements a [GitHub
 Action](https://help.github.com/en/categories/automating-your-workflow-with-github-actions)
 that labels Pull Requests based on configurable conditions.
 
-It is inspired by the example [Pull Request
-Labeller](https://github.com/actions/labeler), but intends to provide a
+It is forked from [Condition based Pull Request Labeler](https://github.com/srvaroa/labeler), but intends to provide a
 richer set of options.
 
 ## Installing
@@ -25,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: srvaroa/labeler@master
+    - uses: anencore94/labeler@master
       env:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 ```
@@ -130,6 +129,13 @@ This condition is satisfied when the PR branch matches on the given regex.
 
 ```yaml
 branch: "^feature/.*"
+```
+
+You could use **negative lookahead (?!re)** pattern to label for prs which violates branch naming convention. 
+```yaml
+- label: "need-to-change-branch-name"
+  branch: "^(?!^feature/.*$)(?!^bugfix/.*$)(?!^enhance/.*$)(?!^style/.*$)(?!^docs/.*$).*$"
+
 ```
 
 ### Regex on PR files
