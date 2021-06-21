@@ -13,4 +13,4 @@ labels:
   - label: "docs"
     branch: "^docs/*"
   - label: "need-to-change-branch-name"
-    branch: "^(?!^feature/\.*$)(?!^bugfix/\.*$)(?!^enhance/\.*$)(?!^style/\.*$)(?!^docs/\.*$)\.*$"
+    branch: "^(?!^feature/\\.*$)(?!^bugfix/\\.*$)(?!^enhance/\\.*$)(?!^style/\\.*$)(?!^docs/\\.*$)\\.*$"
