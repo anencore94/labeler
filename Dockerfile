@@ -1,16 +1,17 @@
-FROM golang:1.12-alpine
+FROM golang:1.16-alpine
 
-LABEL "com.github.actions.name"="Condition-based Pull Request labeller"
+LABEL "com.github.actions.name"="Enhanced Condition-based Pull Request labeller"
 LABEL "com.github.actions.description"="Automatically label pull requests based on rules"
-LABEL "com.github.actions.icon"="award"
-LABEL "com.github.actions.color"="blue"
-LABEL "maintainer"="Galo Navarro <anglorvaroa@gmail.com>"
-LABEL "repository"="https://github.com/srvaroa/labeler"
+LABEL "com.github.actions.icon"="tag"
+LABEL "com.github.actions.color"="green"
+LABEL "maintainer"="Jaeyeon Kim <anencore94@gmail.com>"
+LABEL "repository"="https://github.com/anencore94/labeler"
 
 RUN apk add --no-cache git
 
 WORKDIR /go/src/app
+
 COPY . .
-ENV GO111MODULE=on
-RUN go build -o action ./cmd
+RUN CGO_ENABLED=0 GO111MODULE=on GO15VENDOREXPERIMENT=1 go build -trimpath -o action ./cmd
+
 ENTRYPOINT ["/go/src/app/action"]
