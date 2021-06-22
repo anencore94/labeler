@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: anencore94/labeler@v1.0.5
         with:
-          config_path: "a.txt"
+          config_path: ".github/labeler.yml"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
